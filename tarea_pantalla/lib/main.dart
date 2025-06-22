@@ -75,6 +75,25 @@ class _MyAppState extends State<MyApp> {
                       ],
                     )
                 ],
+              ),
+              SizedBox(height: 15,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    Icon(Icons.list_alt, size: 50.0, color: Colors.lightBlue,),
+                    SizedBox(width: 16,),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Powerful Organization', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),),
+                        Text('Create new lists to match your needs'),
+                        Text('categorize reminders with tags, and'),
+                        Text('manage reminders around your work'),
+                        Text('flow with Smart Lists.')
+                      ],
+                    )
+                ],
               )
             ],
           ),
