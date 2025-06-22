@@ -58,6 +58,23 @@ class _MyAppState extends State<MyApp> {
                       ],
                     )
                 ],
+              ),
+              SizedBox(height: 15,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    Icon(Icons.share, size: 50.0, color: Colors.amber,),
+                    SizedBox(width: 16,),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Easy Sharing', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),),
+                        Text('Collaborate on a list, and even assign'),
+                        Text('individual tasks.')
+                      ],
+                    )
+                ],
               )
             ],
           ),
