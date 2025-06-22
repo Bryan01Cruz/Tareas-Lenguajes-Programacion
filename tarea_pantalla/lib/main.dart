@@ -95,11 +95,12 @@ class _MyAppState extends State<MyApp> {
                     )
                 ],
               ),
+              SizedBox(height: 150,),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
-                  minimumSize: Size(double.infinity, 48),
+                  minimumSize: Size(350, 48),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
