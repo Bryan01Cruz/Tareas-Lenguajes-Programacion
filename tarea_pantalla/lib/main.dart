@@ -26,7 +26,22 @@ class _MyAppState extends State<MyApp> {
               Text('Welcome to', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
               Text('Reminders', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
               SizedBox(height: 15,),
-              
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    Icon(Icons.add, size: 50.0, color: Colors.green,),
+                    SizedBox(width: 16,),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Quick Creation', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),),
+                        Text('Simply type in your list, ask Siri, or add'),
+                        Text('reminder from your Calendar app.')
+                      ],
+                    )
+                ],
+              )
             ],
           ),
         ),
