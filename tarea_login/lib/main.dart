@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tarea_login/views/login_page.dart';
+import 'package:tarea_login/views/register_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,12 +25,23 @@ class MyApp extends StatelessWidget {
         initialLocation: '/login',
         routes: [
           GoRoute(
-            name: 'registro',
-            path: '/registro',
-            builder: (context, state) => ,
+            name: 'login',
+            path: '/login',
+            builder: (context, state) => LoginPage(),
+            
+            routes: [
+              GoRoute(
+                name: 'registro',
+                path: '/registro',
+                builder: (context, state){
+                  return const RegisterPage();
+                },
+              )
+            ]
             )
         ]
       ),
+      title: 'Inicio de sesión',
       );
   }
 }
