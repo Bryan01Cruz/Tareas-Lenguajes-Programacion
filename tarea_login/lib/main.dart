@@ -19,7 +19,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      
+      routerConfig: GoRouter(
+        initialLocation: '/login',
+        routes: [
+          GoRoute(
+            name: 'registro',
+            path: '/registro',
+            builder: (context, state) => ,
+            )
+        ]
+      ),
       );
   }
 }
