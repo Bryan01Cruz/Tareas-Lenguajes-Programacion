@@ -36,6 +36,13 @@ class MyApp extends StatelessWidget {
                 builder: (context, state){
                   return RegisterPage();
                 },
+              ),
+              GoRoute(
+                name: 'home',
+                path: '/home',
+                builder: (context, state){
+                  return;
+                },
               )
             ]
             )
