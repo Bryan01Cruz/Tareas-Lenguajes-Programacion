@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:tarea_login/views/home_page.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tarea_login/views/register_page.dart';
 import 'package:tarea_login/widgets/textfield.dart';
 
 
@@ -74,7 +75,7 @@ class LoginPage extends StatelessWidget {
                       return;
                     }
 
-                    if (! controlUsuario.text.contains('@')) {
+                    if (! controlUsuario.text.contains('@unah.hn')) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           backgroundColor: Colors.red,
@@ -87,11 +88,22 @@ class LoginPage extends StatelessWidget {
                       );
                       return;
                     }
-                    context.goNamed('registro');
+                    context.goNamed('home');
 
                   },
                   child: const Text('Iniciar Sesión'),
-                ),)
+                ),),
+                SizedBox(height: 5,),
+                GestureDetector(
+                  onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                  );
+                },
+                child: Text('Registrarse',style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+              )
               ],  
             ),
           ),

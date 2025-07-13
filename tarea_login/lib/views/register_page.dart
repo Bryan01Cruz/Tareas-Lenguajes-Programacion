@@ -60,7 +60,7 @@ class RegisterPage extends StatelessWidget {
                   keyboardType: TextInputType.visiblePassword, 
                   borderRadius: BorderRadius.circular(16), 
                   label: 'Ingrese una contraseña',
-                  hintText: 'Contraseña',
+                  hintText: 'Número de cuenta',
                   contentPadding: EdgeInsets.all(22),
                   ),
                 SizedBox(height: 20,),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tarea_login/views/home_page.dart';
 import 'package:tarea_login/views/login_page.dart';
 import 'package:tarea_login/views/register_page.dart';
 
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
                 name: 'home',
                 path: '/home',
                 builder: (context, state){
-                  return;
+                  return HomePage();
                 },
               )
             ]
