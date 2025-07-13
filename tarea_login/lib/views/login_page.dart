@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tarea_login/widgets/textfield.dart';
 //import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  //final ControlUsuario = TextEditingController();
-  //final ControlContraseña = TextEditingController();
+  final ControlUsuario = TextEditingController();
+  final ControlContrasena = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +19,86 @@ class LoginPage extends StatelessWidget {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Inicio de sesión', style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),)
-              ],
+                Text('Inicio de sesión', 
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                Icon(Icons.supervised_user_circle, size: 80.0,color: Colors.blueAccent,),
+                SizedBox(height: 20,),
+                TextfieldPropio(
+                  controller: ControlUsuario, 
+                  KeyboardType: TextInputType.visiblePassword, 
+                  borderRadius: BorderRadius.circular(16), 
+                  label: 'Ingrese su correo institucional',
+                  hintText: 'Correo institucional',
+                  contentPadding: EdgeInsets.all(22),
+                  prefixIcon: Icon(Icons.email_outlined),
+                  ),
+                SizedBox(height: 10),
+                TextfieldPropio(
+                  controller: ControlContrasena, 
+                  KeyboardType: TextInputType.visiblePassword, 
+                  borderRadius: BorderRadius.circular(16), 
+                  label: 'Ingrese su contraseña',
+                  hintText: 'Contraseña',
+                  contentPadding: EdgeInsets.all(22),
+                  prefixIcon: Icon(Icons.email_outlined),
+                ),
+                Spacer(),
+                SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.all(16),
+                  ),
+                  onPressed: () {
+                    if (ControlUsuario.text.isEmpty ||
+                        ControlContrasena.text.isEmpty) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('Observación'),
+                            content: Text(
+                              'El usuario o contraseña no pueden estar vacíos',
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  // Navigator.of(context).pop();
+                                  context.pop();
+                                },
+                                child: Text('Entiendo'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+
+                      return;
+                    }
+
+                    if (!ControlContrasena.text.contains('@unah.hn')) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.blueAccent,
+                          action: SnackBarAction(
+                            label: 'Cerrar',
+                            onPressed: () {},
+                          ),
+                          content: Text('El correo no es válido'),
+                        ),
+                      );
+                      return;
+                    }
+                    context.push('/home');
+                  },
+                  child: const Text('Iniciar Sesión'),
+                ),)
+              ],  
             ),
           ),
           ),
