@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:tarea_login/widgets/textfield.dart';
-//import 'package:go_router/go_router.dart';
+
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -71,23 +71,24 @@ class LoginPage extends StatelessWidget {
                           content: Text('El usuario o contraseña no puede quedar vacío.'),
                         ),
                       );
-
                       return;
                     }
-                    if (! controlContrasena.text.contains('@unah.hn')) {
+
+                    if (! controlUsuario.text.contains('@')) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          backgroundColor: Colors.blueAccent,
+                          backgroundColor: Colors.red,
                           action: SnackBarAction(
                             label: 'Cerrar',
                             onPressed: () {},
                           ),
-                          content: Text('El correo no es válido debe tener la extensión @unah.hn'),
+                          content: Text('El correo no es válido'),
                         ),
                       );
                       return;
                     }
-                    context.push('/registro');
+                    context.goNamed('registro');
+
                   },
                   child: const Text('Iniciar Sesión'),
                 ),)
