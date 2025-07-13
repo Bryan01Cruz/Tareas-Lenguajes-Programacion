@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:tarea_login/widgets/textfield.dart';
 //import 'package:go_router/go_router.dart';
@@ -7,8 +7,8 @@ import 'package:tarea_login/widgets/textfield.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  final ControlUsuario = TextEditingController();
-  final ControlContrasena = TextEditingController();
+  final controlUsuario = TextEditingController();
+  final controlContrasena = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,25 +27,27 @@ class LoginPage extends StatelessWidget {
                 Icon(Icons.supervised_user_circle, size: 80.0,color: Colors.blueAccent,),
                 SizedBox(height: 20,),
                 TextfieldPropio(
-                  controller: ControlUsuario, 
-                  KeyboardType: TextInputType.visiblePassword, 
+                  controller: controlUsuario, 
+                  keyboardType: TextInputType.visiblePassword, 
                   borderRadius: BorderRadius.circular(16), 
                   label: 'Ingrese su correo institucional',
                   hintText: 'Correo institucional',
                   contentPadding: EdgeInsets.all(22),
                   prefixIcon: Icon(Icons.email_outlined),
+                  
                   ),
                 SizedBox(height: 10),
                 TextfieldPropio(
-                  controller: ControlContrasena, 
-                  KeyboardType: TextInputType.visiblePassword, 
+                  controller: controlContrasena, 
+                  keyboardType: TextInputType.visiblePassword, 
                   borderRadius: BorderRadius.circular(16), 
                   label: 'Ingrese su contraseña',
                   hintText: 'Contraseña',
                   contentPadding: EdgeInsets.all(22),
-                  prefixIcon: Icon(Icons.email_outlined),
+                  obscureText: false,
+                  prefixIcon: Icon(Icons.password_rounded)
                 ),
-                Spacer(),
+                SizedBox(height: 20,),
                 SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -55,33 +57,24 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(16),
                   ),
                   onPressed: () {
-                    if (ControlUsuario.text.isEmpty ||
-                        ControlContrasena.text.isEmpty) {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text('Observación'),
-                            content: Text(
-                              'El usuario o contraseña no pueden estar vacíos',
-                            ),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  // Navigator.of(context).pop();
-                                  context.pop();
-                                },
-                                child: Text('Entiendo'),
-                              ),
-                            ],
-                          );
-                        },
+
+                    if (controlUsuario.text.isEmpty ||
+                        controlContrasena.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.blueAccent,
+                          action: SnackBarAction(
+                            label: 'Cerrar',
+
+                            onPressed: () {},
+                          ),
+                          content: Text('El usuario o contraseña no puede quedar vacío.'),
+                        ),
                       );
 
                       return;
                     }
-
-                    if (!ControlContrasena.text.contains('@unah.hn')) {
+                    if (! controlContrasena.text.contains('@unah.hn')) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           backgroundColor: Colors.blueAccent,
@@ -89,12 +82,12 @@ class LoginPage extends StatelessWidget {
                             label: 'Cerrar',
                             onPressed: () {},
                           ),
-                          content: Text('El correo no es válido'),
+                          content: Text('El correo no es válido debe tener la extensión @unah.hn'),
                         ),
                       );
                       return;
                     }
-                    context.push('/home');
+                    context.push('/registro');
                   },
                   child: const Text('Iniciar Sesión'),
                 ),)

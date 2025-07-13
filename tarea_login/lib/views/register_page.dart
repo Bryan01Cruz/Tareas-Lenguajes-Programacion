@@ -6,9 +6,23 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // drawer: Drawer(),
-      appBar: AppBar(title: Text('Registro')),
-      body: Center(child: Text('Register Page')),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Registrar nuevo usuario', 
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                Icon(Icons.network_locked, size: 80.0,color: Colors.blueAccent,),
+              ],  
+            ),
+          ),
+          ),
+      ),
     );
   }
 }

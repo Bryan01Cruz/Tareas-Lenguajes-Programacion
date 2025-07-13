@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
                 name: 'registro',
                 path: '/registro',
                 builder: (context, state){
-                  return const RegisterPage();
+                  return RegisterPage();
                 },
               )
             ]
