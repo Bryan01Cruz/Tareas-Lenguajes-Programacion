@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tarea_login/views/home_page.dart';
+import 'package:tarea_login/widgets/textfieldpassword.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tarea_login/views/register_page.dart';
 import 'package:tarea_login/widgets/textfield.dart';
 
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
-
+  LoginPage({super.key,});
+  final ValueNotifier<bool> ocultarTexto = ValueNotifier(true);
   final controlUsuario = TextEditingController();
   final controlContrasena = TextEditingController();
 
@@ -38,15 +38,17 @@ class LoginPage extends StatelessWidget {
                   
                   ),
                 SizedBox(height: 10),
-                TextfieldPropio(
-                  controller: controlContrasena, 
+                TextfieldPassword(
+                  controller: controlContrasena,
+                  toggle: ocultarTexto,
                   keyboardType: TextInputType.visiblePassword, 
                   borderRadius: BorderRadius.circular(16), 
                   label: 'Ingrese su contraseña',
                   hintText: 'Contraseña',
                   contentPadding: EdgeInsets.all(22),
                   obscureText: true,
-                  prefixIcon: Icon(Icons.password_rounded)
+                  prefixIcon: Icon(Icons.password_rounded),
+
                 ),
                 SizedBox(height: 20,),
                 SizedBox(

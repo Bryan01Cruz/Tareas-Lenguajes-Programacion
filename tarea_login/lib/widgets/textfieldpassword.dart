@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class TextfieldPropio extends StatelessWidget {
-  const TextfieldPropio({super.key, required this.controller, required this.keyboardType, 
+class TextfieldPassword extends StatelessWidget {
+  const TextfieldPassword({super.key, required this.controller, required this.keyboardType, 
   required this.borderRadius,required this.label, this.hintText, this.prefixIcon,this.contentPadding,
-  this.obscureText=true});
+  this.obscureText=true,required this.toggle});
 
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -13,9 +13,13 @@ class TextfieldPropio extends StatelessWidget {
   final Icon? prefixIcon;
   final EdgeInsetsGeometry? contentPadding;
   final bool obscureText;
+  final ValueNotifier<bool> toggle;
+  
 
   @override
   Widget build(BuildContext context) {
+    return ValueListenableBuilder(valueListenable: toggle, 
+    builder: (context, obscureText, _){
     return TextField(
       readOnly: false,
       controller: controller,
@@ -29,7 +33,10 @@ class TextfieldPropio extends StatelessWidget {
       label: Text(label),
       hintText: hintText,
       prefixIcon: prefixIcon,
+      suffix: IconButton(icon: Icon(obscureText ? Icons.visibility_off : Icons.visibility), 
+      onPressed: () => toggle.value = !obscureText)
       ), 
     );
+    });
   }
 }
