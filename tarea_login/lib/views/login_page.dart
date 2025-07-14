@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
                   label: 'Ingrese su contraseña',
                   hintText: 'Contraseña',
                   contentPadding: EdgeInsets.all(22),
-                  obscureText: false,
+                  obscureText: true,
                   prefixIcon: Icon(Icons.password_rounded)
                 ),
                 SizedBox(height: 20,),
@@ -91,7 +91,7 @@ class LoginPage extends StatelessWidget {
                     context.goNamed('home');
 
                   },
-                  child: const Text('Iniciar Sesión'),
+                  child: const Text('Iniciar Sesión', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                 ),),
                 SizedBox(height: 5,),
                 GestureDetector(
