@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tarea_login/widgets/textfield.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
@@ -117,7 +118,7 @@ class RegisterPage extends StatelessWidget {
                       );
                       return;
                     }
-
+                    context.goNamed('login');
                   },
                   child: const Text('Registrar usuario'),
                 ),)

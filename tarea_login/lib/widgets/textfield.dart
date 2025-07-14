@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class TextfieldPropio extends StatelessWidget {
   const TextfieldPropio({super.key, required this.controller, required this.keyboardType, 
-  required this.borderRadius,required this.label, this.hintText, this.prefixIcon,this.contentPadding,
-  this.obscureText=true});
+  required this.borderRadius,required this.label, this.hintText, this.prefixIcon,this.contentPadding});
 
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -12,14 +11,14 @@ class TextfieldPropio extends StatelessWidget {
   final String? hintText;
   final Icon? prefixIcon;
   final EdgeInsetsGeometry? contentPadding;
-  final bool obscureText;
+
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       readOnly: false,
       controller: controller,
-      obscureText: obscureText,
+      
       keyboardType: keyboardType,
       decoration: InputDecoration(
         border: OutlineInputBorder(
